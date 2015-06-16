@@ -11,7 +11,7 @@
 #   This is the device where the journal files are stored (small)
 
 class ceph::client::rgw ($rgw_dns_name){
-  concat::fragment { "/etc/ceph/ceph.conf-rgw":
+  concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
     content => template("${module_name}/ceph.conf-rgw.erb"),
     order   => 2,
