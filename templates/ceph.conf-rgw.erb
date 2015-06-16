@@ -1,0 +1,8 @@
+[client.radosgw.rgw]
+host = <%= @hostname %>
+keyring = /etc/ceph/keyring
+rgw print continue = false
+rgw resolve cname = true
+rgw socket path = /var/run/ceph/radosgw.sock
+log file = /var/log/ceph/radosgw.log
+rgw dns name = <%= @rgw_dns_name %>

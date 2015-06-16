@@ -1,0 +1,7 @@
+[osd.<%= @title %>]
+<% unless @location.nil? -%>
+osd crush location = <%= @location %>
+<% end -%>
+host = <%= @hostname %>
+osd journal = <%= @journal %>
+

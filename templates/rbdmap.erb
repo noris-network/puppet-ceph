@@ -1,0 +1,4 @@
+# RbdDevice             Parameters
+<% @bd.each do |pool,image| %>
+<%= pool %>/<%= image %>    id=<%= @user %>,keyring=/etc/ceph/keyring
+<% end %>
