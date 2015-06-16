@@ -5,7 +5,7 @@
 
 class ceph::config {
   file { [ '/etc/ceph' ]:
-    ensure => directory,
+    ensure  => directory,
     owner   => 'root',
     group   => 'nagios',
     mode    => '0640',

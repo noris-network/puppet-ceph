@@ -10,6 +10,6 @@
 #
 
 class ceph::params {
-  $cluster_net = $ipaddress
-  $public_net  = $ipaddress
+  $cluster_net = $::ipaddress
+  $public_net  = $::ipaddress
 }

@@ -18,30 +18,30 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     order   => 2,
   }
 
-  file { "/var/lib/ceph/osd/ceph-$title" :
+  file { "/var/lib/ceph/osd/ceph-${title}" :
     ensure => directory,
-    owner   => 'root',
-    group   => 'nagios',
-    mode    => '0750',
+    owner  => 'root',
+    group  => 'nagios',
+    mode   => '0750',
   }
-  mount { "/var/lib/ceph/osd/ceph-$title":
+  mount { "/var/lib/ceph/osd/ceph-${title}":
     ensure  => 'mounted',
     device  => $data,
     fstype  => 'xfs',
     options => 'inode64',
     atboot  => true,
-    require => File["/var/lib/ceph/osd/ceph-$title"],
+    require => File["/var/lib/ceph/osd/ceph-${title}"],
     pass    => 2,
   }
-  if $jounal {
+  if $::jounal {
     $journal_string="--osd-journal ${journal}"
   }
   else {
     $journal_string=''
   }
-  exec { "createosd-$title":
-    require => [ Mount["/var/lib/ceph/osd/ceph-$title"], File['/etc/ceph/ceph.conf'], Package['ceph'] ],
-    command => "/usr/bin/ceph-osd -i $title --mkfs --mkkey $journal_string && /usr/bin/ceph auth add osd.$title osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-$title/keyring",
-    creates => "/var/lib/ceph/osd/ceph-$title/keyring",
+  exec { "createosd-${title}":
+    require => [ Mount["/var/lib/ceph/osd/ceph-${title}"], File['/etc/ceph/ceph.conf'], Package['ceph'] ],
+    command => "/usr/bin/ceph-osd -i ${title} --mkfs --mkkey ${journal_string} && /usr/bin/ceph auth add osd.${title} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${title}/keyring",
+    creates => "/var/lib/ceph/osd/ceph-${title}/keyring",
   }
 }
