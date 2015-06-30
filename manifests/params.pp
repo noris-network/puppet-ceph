@@ -1,5 +1,6 @@
 # == Class: ceph::params
 #
+#  This class contains the default parameters
 #
 class ceph::params {
   $cluster_net = $::ipaddress

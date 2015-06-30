@@ -4,6 +4,8 @@
 #
 # === Parameters
 #
+# [*id*]
+#   The id of this monitor.
 
 class ceph::server::mon ($id){
 

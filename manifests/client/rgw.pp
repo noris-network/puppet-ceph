@@ -4,11 +4,9 @@
 #
 # === Parameters
 #
-# [*data*]
-#   This is the device where data is stored on, e.g. /dev/sdb
+# [*rgw_dns_name']
+#   The root dns name of your object store
 #
-# [*journal']
-#   This is the device where the journal files are stored (small)
 
 class ceph::client::rgw ($rgw_dns_name){
   concat::fragment { '/etc/ceph/ceph.conf-rgw':

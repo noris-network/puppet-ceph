@@ -1,4 +1,4 @@
-# == Class: admin_ceph::osd
+# == Class: ceph::osd
 #
 # This module configures a single osd for ceph
 #
@@ -9,6 +9,9 @@
 #
 # [*journal']
 #   This is the device where the journal files are stored (small)
+#
+# [*location*]
+#   The location of this osd.
 
 define ceph::server::osd ($data,$journal=undef,$location=undef){
 

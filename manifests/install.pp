@@ -1,12 +1,6 @@
 # == Class: ceph::install
 #
-# This module configures stuff common to all ceph hosts
-#
-# === Parameters
-#
-# [*mon_hosts*]
-#   This contains a list of all monitor hosts, it is used by all ceph servers
-#   and clients to find the mons.
+# This module installes the ceph package 
 #
 
 class ceph::install {

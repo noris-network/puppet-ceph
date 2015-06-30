@@ -7,6 +7,11 @@
 # [*key*]
 #   This is the key
 #
+# === Example:
+#
+#  ceph::key{'client.admin':
+#    key => 'xxxxxxxxxxxxxxxx'
+#  }
 
 define ceph::key ($key){
   concat::fragment { "/etc/ceph/keyring-${title}":

@@ -14,6 +14,13 @@
 # [*os_release*]
 #   Override os release name for package source (For example if you use Debian Jessie, but
 #   want to use the wheezy sources from the ceph repository.
+#
+# [*cluster_net*]
+#   If you want to have a separate cluster and public network, you can specify your cluster networks here.
+#
+# [*public_net*]
+#   If you want to have a separate cluster and public network, you can specify your public networks here.
+#
 
 class ceph (
   $mon_hosts,
