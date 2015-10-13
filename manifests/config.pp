@@ -4,6 +4,11 @@
 #
 
 class ceph::config {
+
+  $mon_hosts   = $::ceph::mon_hosts
+  $cluster_net = $::ceph::cluster_net
+  $public_net  = $::ceph::public_net
+
   file { [ '/etc/ceph' ]:
     ensure  => directory,
     owner   => 'root',

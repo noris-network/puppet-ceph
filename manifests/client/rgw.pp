@@ -2,12 +2,6 @@
 #
 # This module configures a rados-gateway client for ceph
 #
-# === Parameters
-#
-# [*rgw_dns_name']
-#   The root dns name of your object store
-#
-
 class ceph::client::rgw ($rgw_dns_name){
   concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
@@ -27,7 +21,7 @@ class ceph::client::rgw ($rgw_dns_name){
     ensure => directory,
   }
 
-  file { ['/var/www/fcgi/rgw.fcgi','/var/www/fcgi/rgw-ssl.fcgi']:
+  file { ['/var/www/fcgi/rgw.fcgi','/var/www/fcgi/rgw-ssl.fcgi','/var/www/fcgi/rgw-ssl-stern.fcgi']:
     ensure  => file,
     mode    => '0555',
     content => '#!/bin/bash
