@@ -11,4 +11,3 @@ describe 'ceph::server::mon' do
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-mon').with_content(/^public addr = 1.2.3.4$/) }
   end
 end
-

@@ -1,9 +1,9 @@
 # == Class: ceph::params
 #
-#  This class contains the default parameters
 #
 class ceph::params {
-  $cluster_net = $::ipaddress
-  $public_net  = $::ipaddress
+  $cluster_net = undef
+  $public_net  = undef
   $os_release  = $::lsbdistcodename
+  $release     = undef
 }

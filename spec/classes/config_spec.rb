@@ -9,5 +9,6 @@ describe 'ceph::config' do
   it { should contain_concat__fragment('ceph-main').with_content(/^mon host = foo, bar$/) }
   it { should contain_concat__fragment('ceph-main').with_content(/^cluster network = 1.2.3.4\/24$/) }
   it { should contain_concat__fragment('ceph-main').with_content(/^public network = 5.6.7.8\/24$/) }
-
+  it { should contain_concat('/etc/ceph/rbdmap') }
+  it { should contain_concat__fragment('/etc/ceph/rbdmap-head')}
 end
