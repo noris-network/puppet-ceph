@@ -2,19 +2,29 @@
 auth cluster required = cephx
 auth service required = cephx
 auth client required = cephx
-osd pool default crush replicated ruleset = 0
 
-mon host = <%= @mon_hosts.join(", ") -%>
-
-osd pool default size = 3
-osd recovery op priority = 1
-osd max backfills = 1
-osd recovery max active = 1
+mon host = <%= @mon_hosts.join(", ") %>
 
 <% unless @cluster_net.nil? -%>
 cluster network = <%= @cluster_net %>
 <% end -%>
 <% unless @public_net.nil? -%>
 public network = <%= @public_net %>
+<% end -%>
+
+<% unless @osd_pool_default_crush_replicated_ruleset.nil? -%>
+osd pool default crush replicated ruleset = <%= @osd_pool_default_crush_replicated_ruleset %>
+<% end -%>
+<% unless @osd_pool_default_size.nil? -%>
+osd pool default size    = <%= @osd_pool_default_size %>
+<% end -%>
+<% unless @osd_recovery_op_priority.nil? -%>
+osd recovery op priority = <%= @osd_recovery_op_priority %>
+<% end -%>
+<% unless @osd_max_backfills.nil? -%>
+osd max backfills        = <%= @osd_max_backfills %>
+<% end -%>
+<% unless @osd_recovery_max_active.nil? -%>
+osd recovery max active  = <%= @osd_recovery_max_active %>
 <% end -%>
 

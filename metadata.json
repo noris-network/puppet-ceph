@@ -1,0 +1,28 @@
+{
+  "name": "norisnetwork-ceph",
+  "version": "0.0.1",
+  "author": "Micha Krause",
+  "summary": "A module for configuring ceph",
+  "license": "LGPL-3.0",
+  "source": "https://github.com/noris-network/puppet-ceph",
+  "project_page": "https://github.com/noris-network/puppet-ceph",
+  "issues_url": "https://github.com/noris-network/puppet-ceph/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib"},
+    {"name":"puppetlabs/concat"},
+    {"name":"puppetlabs/apt"},
+    {"name":"puppetlabs/apache"}
+  ],
+  "tags": [
+    "ceph"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7.0",
+        "8.0"
+      ]
+    }
+  ]
+}

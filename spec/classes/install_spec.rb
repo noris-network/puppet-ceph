@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe 'ceph::install' do
   let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne' } }
+  it { should contain_class('ceph::install') }
   context 'with defaults for all parameters' do
     let(:pre_condition) { 'class{"ceph": mon_hosts => ["x"]}' }
     it { should contain_package('ceph') }

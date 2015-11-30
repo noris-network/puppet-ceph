@@ -4,9 +4,9 @@ define ceph::client::rbd ($pool=rbd,$id=admin) {
     content => "${pool}/${title}	id=${id},keyring=/etc/ceph/keyring\n",
   }
 
-  exec { "map-rbd-$title":
+  exec { "map-rbd-${title}":
     command => "rbd -p ${pool} --id ${id} map ${title}",
-    path    => [ "/usr/bin/", "/bin/" ],
+    path    => [ '/usr/bin/', '/bin/' ],
     creates => "/dev/rbd/${pool}/${title}",
   }
 

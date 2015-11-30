@@ -5,9 +5,14 @@
 
 class ceph::config {
 
-  $mon_hosts   = $::ceph::mon_hosts
-  $public_net  = $::ceph::public_net
-  $cluster_net = $::ceph::cluster_net
+  $cluster_net                               = $::ceph::cluster_net
+  $mon_hosts                                 = $::ceph::mon_hosts
+  $osd_recovery_max_active                   = $::ceph::osd_recovery_max_active
+  $public_net                                = $::ceph::public_net
+  $osd_max_backfills                         = $::ceph::osd_max_backfills
+  $osd_recovery_op_priority                  = $::ceph::osd_recovery_op_priority
+  $osd_pool_default_size                     = $::ceph::osd_pool_default_size
+  $osd_pool_default_crush_replicated_ruleset = $::ceph::osd_pool_default_crush_replicated_ruleset
 
   file { [ '/etc/ceph' ]:
     ensure  => directory,

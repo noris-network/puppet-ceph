@@ -17,11 +17,17 @@
 
 class ceph (
   $mon_hosts,
-  $release     = $::ceph::params::release,
-  $os_release  = $::ceph::params::os_release,
-  $cluster_net = $::ceph::params::cluster_net,
-  $public_net  = $::ceph::params::public_net,
+  $cluster_net                               = $::ceph::params::cluster_net,
+  $osd_pool_default_crush_replicated_ruleset = $::ceph::params::osd_pool_default_crush_replicated_ruleset,
+  $osd_pool_default_size                     = $::ceph::params::osd_pool_default_size,
+  $osd_recovery_op_priority                  = $::ceph::params::osd_recovery_op_priority,
+  $os_release                                = $::ceph::params::os_release,
+  $public_net                                = $::ceph::params::public_net,
+  $release                                   = $::ceph::params::release,
+  $osd_max_backfills                         = $::ceph::params::osd_max_backfills,
+  $osd_recovery_max_active                   = $::ceph::params::osd_recovery_max_active,
   ) inherits ceph::params {
+
   include ::ceph::install
   include ::ceph::config
   Class['::ceph::install'] -> Class['::ceph::config']

@@ -1,5 +1,7 @@
 # puppet-ceph
 
+[![Build Status](https://api.travis-ci.org/noris-network/puppet-ceph.png)](https://travis-ci.org/noris-network/puppet-ceph)
+
 #### Table of Contents
 
 1. [Overview](#overview)

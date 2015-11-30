@@ -2,7 +2,11 @@
 #
 # This module configures a rados-gateway client for ceph
 #
-class ceph::client::rgw ($rgw_dns_name){
+# [*rgw_dns_name*]
+#   base dns name of your rgw (example: rgw.example.com)
+
+
+class ceph::client::rgw ($rgw_dns_name) {
   concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
     content => template("${module_name}/ceph.conf-rgw.erb"),
@@ -12,20 +16,23 @@ class ceph::client::rgw ($rgw_dns_name){
   package {'radosgw':
     ensure => installed,
   }
-
   service {'radosgw':
-    ensure => running,
+    ensure  => running,
+    require => [ Package['radosgw'], Class['::ceph::config'] ]
   }
 
-  file { '/var/www/fcgi':
+  class {'::apache':
+    default_mods     => false,
+    default_vhost    => false,
+    server_tokens    => 'Prod',
+    server_signature => 'Off',
+    trace_enable     => 'Off',
+    mpm_module       => 'prefork',
+  }
+
+  include apache::mod::auth_basic
+
+  file{'/var/www/fcgi':
     ensure => directory,
-  }
-
-  file { ['/var/www/fcgi/rgw.fcgi','/var/www/fcgi/rgw-ssl.fcgi','/var/www/fcgi/rgw-ssl-stern.fcgi']:
-    ensure  => file,
-    mode    => '0555',
-    content => '#!/bin/bash
-exec /usr/bin/radosgw -c /etc/ceph/ceph.conf -n client.radosgw.rgw
-'
   }
 }
