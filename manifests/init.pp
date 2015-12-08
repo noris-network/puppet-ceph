@@ -26,6 +26,8 @@ class ceph (
   $release                                   = $::ceph::params::release,
   $osd_max_backfills                         = $::ceph::params::osd_max_backfills,
   $osd_recovery_max_active                   = $::ceph::params::osd_recovery_max_active,
+  $log_to_syslog                             = $::ceph::params::log_to_syslog,
+  $log_file                                  = $::ceph::params::log_file,
   ) inherits ceph::params {
 
   include ::ceph::install

@@ -2,3 +2,10 @@
 host = <%= @hostname %>
 public addr = <%= @ipaddress %>
 mon addr = <%= @ipaddress %>:6789
+<% unless @log_to_syslog.nil? -%>
+mon cluster log to syslog = true
+<% end -%>
+<% unless @mon_log_file.nil? -%>
+mon cluster log file = <%= @mon_log_file %>
+<% end -%>
+

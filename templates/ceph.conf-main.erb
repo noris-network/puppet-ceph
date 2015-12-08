@@ -5,6 +5,14 @@ auth client required = cephx
 
 mon host = <%= @mon_hosts.join(", ") %>
 
+<% unless @log_to_syslog.nil? -%>
+log to syslog = true
+err to syslog = true
+<% end -%>
+<% unless @log_file.nil? -%>
+log file = <%= @log_file -%>
+<% end -%>
+
 <% unless @cluster_net.nil? -%>
 cluster network = <%= @cluster_net %>
 <% end -%>

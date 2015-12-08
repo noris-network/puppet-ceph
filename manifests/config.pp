@@ -13,6 +13,8 @@ class ceph::config {
   $osd_recovery_op_priority                  = $::ceph::osd_recovery_op_priority
   $osd_pool_default_size                     = $::ceph::osd_pool_default_size
   $osd_pool_default_crush_replicated_ruleset = $::ceph::osd_pool_default_crush_replicated_ruleset
+  $log_to_syslog                             = $::ceph::log_to_syslog
+  $log_file                                  = $::ceph::log_file
 
   file { [ '/etc/ceph' ]:
     ensure  => directory,
