@@ -31,7 +31,6 @@ define ceph::client::rgw::vhost (
     rewrites       => [ {
       'rewrite_rule' => [ "^/([a-zA-Z0-9-_.]*)([/]?.*) /fcgi/${title}.fcgi?page=\$1&params=\$2&%{QUERY_STRING} [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]" ]
     } ],
-    require        => Class['::apache']
   }
 
   if $ssl {
