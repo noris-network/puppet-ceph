@@ -2,6 +2,7 @@
 auth cluster required = cephx
 auth service required = cephx
 auth client required = cephx
+mon osd down out subtree limit = host
 
 mon host = <%= @mon_hosts.join(", ") %>
 

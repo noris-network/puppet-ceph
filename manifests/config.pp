@@ -15,13 +15,14 @@ class ceph::config {
   $osd_pool_default_crush_replicated_ruleset = $::ceph::osd_pool_default_crush_replicated_ruleset
   $log_to_syslog                             = $::ceph::log_to_syslog
   $log_file                                  = $::ceph::log_file
+  $config_dir_mode                           = $::ceph::config_dir_mode
+  $config_dir_group                          = $::ceph::config_dir_group
 
   file { [ '/etc/ceph' ]:
     ensure  => directory,
     owner   => 'root',
-    group   => 'nagios',
-    mode    => '0640',
-    require => Package['nagios-nrpe-server'],
+    group   => $config_dir_group,
+    mode    => $config_dir_mode,
   }
 
   concat { '/etc/ceph/ceph.conf': }

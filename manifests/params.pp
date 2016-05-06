@@ -8,4 +8,5 @@ class ceph::params {
   $release       = undef
   $log_file      = undef
   $log_to_syslog = undef
+  $ceph_dir_mode = '0750'
 }

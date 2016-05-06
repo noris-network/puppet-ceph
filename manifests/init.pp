@@ -28,6 +28,8 @@ class ceph (
   $osd_recovery_max_active                   = $::ceph::params::osd_recovery_max_active,
   $log_to_syslog                             = $::ceph::params::log_to_syslog,
   $log_file                                  = $::ceph::params::log_file,
+  $config_dir_mode                           = $::ceph::params::config_dir_mode,
+  $config_dir_group                          = $::ceph::params::config_dir_group,
   ) inherits ceph::params {
 
   include ::ceph::install

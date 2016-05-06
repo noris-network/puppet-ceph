@@ -4,7 +4,7 @@ describe 'ceph::client::rgw' do
   context 'with defaults for all parameters' do
     it { should contain_class('ceph::client::rgw') }
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^\[client.radosgw.rgw\]$/) }
-    let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian'} }
+    let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian', :operatingsystem => 'Debian'} }
     let(:params) { {
       'rgw_dns_name'     => 'rgw.example.com',
     }}

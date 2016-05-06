@@ -11,6 +11,8 @@ describe 'ceph' do
     :osd_recovery_op_priority => 1,
     :osd_max_backfills => 1,
     :osd_recovery_max_active => 1,
+    :config_dir_mode => '0750',
+    :config_dir_group => 'nagios',
   }}
   it { should contain_class('ceph') }
   it { should contain_concat__fragment('ceph-main').with_content(/^mon host\s+= foo, bar$/) }
@@ -21,6 +23,9 @@ describe 'ceph' do
   it { should contain_concat__fragment('ceph-main').with_content(/^osd recovery op priority\s+= 1$/) }
   it { should contain_concat__fragment('ceph-main').with_content(/^osd max backfills\s+= 1$/) }
   it { should contain_concat__fragment('ceph-main').with_content(/^osd recovery max active\s+= 1$/) }
+
+  it { should contain_file('/etc/ceph').with_group('nagios') }
+  it { should contain_file('/etc/ceph').with_mode('0750') }
 end
 
 at_exit { RSpec::Puppet::Coverage.report! }

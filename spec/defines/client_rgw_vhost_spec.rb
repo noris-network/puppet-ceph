@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe 'ceph::client::rgw::vhost',  :type => :define do
 
-  let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian'} }
+  let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian', :operatingsystem => 'Debian' } }
   let(:title) { "vhost" }
   let(:pre_condition) { 'class {"::ceph::client::rgw": rgw_dns_name => "foo.bar" }' }
 
@@ -10,12 +10,10 @@ describe 'ceph::client::rgw::vhost',  :type => :define do
       :ssl => false,
       :ip  => '1.2.3.4',
     }}
-    it { should contain_apache__namevirtualhost('*:80') }
     it { should contain_apache__vhost('vhost').with( {
       :fastcgi_server => "/var/www/fcgi/vhost.fcgi",
     }) }
     it { should contain_apache__listen('80') }
-    it { should contain_apache__namevirtualhost('*:80') }
   end
   context 'with ssl enabled' do
     let(:params) { {

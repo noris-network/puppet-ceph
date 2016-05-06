@@ -24,11 +24,12 @@ define ceph::client::rgw::vhost (
   ){
 
   apache::vhost {$title:
-    docroot        => '/var/www',
-    fastcgi_socket => '/var/run/ceph/radosgw.sock',
-    fastcgi_dir    => '/var/www/fcgi',
-    fastcgi_server => "/var/www/fcgi/${title}.fcgi",
-    rewrites       => [ {
+    docroot              => '/var/www',
+    fastcgi_socket       => '/var/run/ceph/radosgw.sock',
+    fastcgi_dir          => '/var/www/fcgi',
+    fastcgi_server       => "/var/www/fcgi/${title}.fcgi",
+    fastcgi_idle_timeout => 120,
+    rewrites             => [ {
       'rewrite_rule' => [ "^/([a-zA-Z0-9-_.]*)([/]?.*) /fcgi/${title}.fcgi?page=\$1&params=\$2&%{QUERY_STRING} [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]" ]
     } ],
   }
