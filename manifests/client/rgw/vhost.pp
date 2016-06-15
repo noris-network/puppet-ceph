@@ -46,13 +46,14 @@ define ceph::client::rgw::vhost (
       content => $key,
     }
     Apache::Vhost[$title] {
-      port       => 443,
-      ssl        => true,
-      add_listen => false,
-      ip_based   => true,
-      ip         => $ip,
-      ssl_cert   => "/etc/ssl/certs/${title}.crt",
-      ssl_key    => "/etc/ssl/private/${title}.key",
+      port          => 443,
+      serveraliases => [ $ceph::client::rgw::rgw_dns_name ],
+      ssl           => true,
+      add_listen    => false,
+      ip_based      => true,
+      ip            => $ip,
+      ssl_cert      => "/etc/ssl/certs/${title}.crt",
+      ssl_key       => "/etc/ssl/private/${title}.key",
     }
   }
 
