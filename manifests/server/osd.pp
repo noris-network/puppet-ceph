@@ -23,10 +23,11 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
 
   file { "/var/lib/ceph/osd/ceph-${title}" :
     ensure => directory,
-    owner  => 'root',
-    group  => 'nagios',
     mode   => '0750',
+    owner  => 'ceph',
+    group  => 'ceph',
   }
+
   mount { "/var/lib/ceph/osd/ceph-${title}":
     ensure  => 'mounted',
     device  => $data,
@@ -36,7 +37,11 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     require => File["/var/lib/ceph/osd/ceph-${title}"],
     pass    => 2,
   }
-  if $::jounal {
+  if $journal {
+    file { "/etc/udev/rules.d/90-ceph-osd-${title}.rules":
+      ensure  => file,
+      content => "KERNEL==\"$journal\", SUBSYSTEM==\"block\", OWNER=\"ceph\"",
+    }
     $journal_string="--osd-journal ${journal}"
   }
   else {
