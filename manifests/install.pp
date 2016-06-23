@@ -12,6 +12,13 @@ class ceph::install {
       include_src => false,
     }
   }
+
+  apt::pin {'ceph':
+    priority   => 1001,
+    originator => 'RedHat',
+    packages   => '*',
+  }
+
   package { 'ceph':
     ensure => 'installed',
   }

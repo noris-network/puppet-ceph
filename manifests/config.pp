@@ -19,10 +19,10 @@ class ceph::config {
   $config_dir_group                          = $::ceph::config_dir_group
 
   file { [ '/etc/ceph' ]:
-    ensure  => directory,
-    owner   => 'root',
-    group   => $config_dir_group,
-    mode    => $config_dir_mode,
+    ensure => directory,
+    owner  => 'root',
+    group  => $config_dir_group,
+    mode   => $config_dir_mode,
   }
 
   concat { '/etc/ceph/ceph.conf': }

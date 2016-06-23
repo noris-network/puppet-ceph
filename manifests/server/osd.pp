@@ -40,12 +40,9 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
   if $journal {
     file { "/etc/udev/rules.d/90-ceph-osd-${title}.rules":
       ensure  => file,
-      content => "KERNEL==\"$journal\", SUBSYSTEM==\"block\", OWNER=\"ceph\"",
+      content => "KERNEL==\"${journal}\", SUBSYSTEM==\"block\", OWNER=\"ceph\"",
     }
     $journal_string="--osd-journal ${journal}"
-  }
-  else {
-    $journal_string=''
   }
   exec { "createosd-${title}":
     require => [ Mount["/var/lib/ceph/osd/ceph-${title}"], File['/etc/ceph/ceph.conf'], Package['ceph'] ],
