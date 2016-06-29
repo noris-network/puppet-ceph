@@ -4,7 +4,7 @@
 class ceph::install {
   if $::ceph::release {
     apt::source { 'ceph':
-      location    => "http://ceph.com/debian-${::ceph::release}/",
+      location    => "http://download.ceph.com/debian-${::ceph::release}/",
       release     => $::ceph::os_release,
       repos       => 'main',
       key         => '08B73419AC32B4E966C1A330E84AC2C0460F3994',
