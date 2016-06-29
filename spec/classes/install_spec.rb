@@ -5,15 +5,13 @@ describe 'ceph::install' do
   context 'with defaults for all parameters' do
     let(:pre_condition) { 'class{"ceph": mon_hosts => ["x"]}' }
     it { should contain_package('ceph') }
-
-    it { should contain_apt__pin('ceph').with_originator("RedHat") }
-    it { should contain_apt__pin('ceph').with_packages("*") }
-    it { should contain_apt__pin('ceph').with_priority("1001") }
-
   end
   context 'with release set to x and os_release set to foobar' do
     let(:pre_condition) { 'class{"ceph": os_release => "foobar", mon_hosts => ["x"], release => "x" }' }
     it { should contain_apt__source('ceph').with_release('foobar') }
     it { should contain_apt__source('ceph').with_location('http://ceph.com/debian-x/') }
+    it { should contain_apt__pin('ceph').with_originator("RedHat") }
+    it { should contain_apt__pin('ceph').with_packages("*") }
+    it { should contain_apt__pin('ceph').with_priority("1001") }
   end
 end

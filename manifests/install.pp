@@ -11,12 +11,12 @@ class ceph::install {
       key_source  => 'https://git.ceph.com/?p=ceph.git;a=blob_plain;f=keys/release.asc',
       include_src => false,
     }
-  }
 
-  apt::pin {'ceph':
-    priority   => 1001,
-    originator => 'RedHat',
-    packages   => '*',
+    apt::pin {'ceph':
+      priority   => 1001,
+      originator => 'RedHat',
+      packages   => '*',
+    }
   }
 
   package { 'ceph':
