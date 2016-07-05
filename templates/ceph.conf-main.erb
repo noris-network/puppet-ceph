@@ -36,4 +36,7 @@ osd max backfills        = <%= @osd_max_backfills %>
 <% unless @osd_recovery_max_active.nil? -%>
 osd recovery max active  = <%= @osd_recovery_max_active %>
 <% end -%>
+<% unless @osd_heartbeat_grace.nil? -%>
+osd heartbeat grace = <%= @osd_heartbeat_grace %>
+<% end -%>
 
