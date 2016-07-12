@@ -6,6 +6,6 @@ rgw resolve cname = true
 rgw socket path = /var/run/ceph/radosgw.sock
 log file = /var/log/ceph/radosgw.log
 rgw dns name = <%= @rgw_dns_name %>
-<% unless @rgw_bucket_index_max_shards.nil? %>
-rgw bucket index max shards = <%= @rgw_bucket_index_max_shards %>
-<% end %>
+<% unless @rgw_bucket_index_max_shards.nil? -%>
+rgw override bucket index max shards = <%= @rgw_bucket_index_max_shards %>
+<% end -%>

@@ -11,7 +11,7 @@ describe 'ceph::client::rgw' do
     }}
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^host = rgw$/) }
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^rgw dns name = rgw.example.com$/) }
-    it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^rgw bucket index max shards = 64$/) }
+    it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^rgw override bucket index max shards = 64$/) }
     it { should contain_package('radosgw').with_ensure('installed') }
     it { should contain_service('radosgw').with_ensure('running') }
     it { should contain_class('apache') }
