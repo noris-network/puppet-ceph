@@ -6,7 +6,10 @@
 #   base dns name of your rgw (example: rgw.example.com)
 
 
-class ceph::client::rgw ($rgw_dns_name) {
+class ceph::client::rgw (
+  $rgw_dns_name,
+  $rgw_bucket_index_max_shards=undef,
+) {
   concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
     content => template("${module_name}/ceph.conf-rgw.erb"),
