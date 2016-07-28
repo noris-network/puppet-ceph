@@ -20,9 +20,9 @@ class ceph::server::mon (
   $mon_log_file=undef
   ){
 
-  host { $fqdn:
-    ip           => $ipaddress,
-    host_aliases => $hostname,
+  host { $::fqdn:
+    ip           => $::ipaddress,
+    host_aliases => $::hostname,
   }
 
   concat::fragment { '/etc/ceph/ceph.conf-mon':
