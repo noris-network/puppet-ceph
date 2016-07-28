@@ -9,6 +9,12 @@
 #
 
 define ceph::key ($key){
+  if $title == 'client.admin' {
+    $_auid = 0
+    $_caps_mds = 'allow'
+    $_caps_mon = 'allow *'
+    $_caps_osd = 'allow *'
+  }
   concat::fragment { "/etc/ceph/keyring-${title}":
     target  => '/etc/ceph/keyring',
     content => template("${module_name}/key.erb"),

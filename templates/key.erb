@@ -1,2 +1,14 @@
 [<%= @title %>]
         key = <%= @key %>
+<% unless @_auid.nil? -%>
+        auid = <%= @_auid %>
+<% end -%>
+<% unless @_caps_mds.nil? -%>
+        caps mds = "<%= @_caps_mds %>"
+<% end -%>
+<% unless @_caps_mon.nil? -%>
+        caps mon = "<%= @_caps_mon %>"
+<% end -%>
+<% unless @_caps_osd.nil? -%>
+        caps osd = "<%= @_caps_osd %>"
+<% end -%>
