@@ -45,7 +45,13 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     $journal_string="--osd-journal ${journal}"
   }
   exec { "createosd-${title}":
-    require => [ Mount["/var/lib/ceph/osd/ceph-${title}"], File['/etc/ceph/ceph.conf'], Package['ceph'] ],
+    user    => 'ceph',
+    require => [
+      Mount["/var/lib/ceph/osd/ceph-${title}"],
+      File['/etc/ceph/ceph.conf'],
+      Package['ceph'],
+      Ceph::Key['client.admin'],
+    ],
     command => "/usr/bin/ceph-osd -i ${title} --mkfs --mkkey ${journal_string} && /usr/bin/ceph auth add osd.${title} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${title}/keyring",
     creates => "/var/lib/ceph/osd/ceph-${title}/keyring",
   }
