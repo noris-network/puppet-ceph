@@ -17,5 +17,6 @@ describe 'ceph::client::rgw' do
     it { should contain_class('apache') }
     it { should contain_class('apache::mod::auth_basic') }
     it { should contain_file('/var/www/fcgi').with_ensure('directory') }
+    it { should contain_file('/var/run/ceph').with_group('www-data') }
   end
 end

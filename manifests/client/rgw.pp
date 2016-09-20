@@ -4,7 +4,10 @@
 #
 # [*rgw_dns_name*]
 #   base dns name of your rgw (example: rgw.example.com)
-
+#
+# [*rgw_bucket_index_max_shards*]
+#   Use this number of shards for newly created bucket indexes.
+#
 
 class ceph::client::rgw (
   $rgw_dns_name,
@@ -21,7 +24,7 @@ class ceph::client::rgw (
   }
   service {'radosgw':
     ensure  => running,
-    require => [ Package['radosgw'], Class['::ceph::config'] ]
+    require => [ Package['radosgw'], Class['::ceph::config'] ],
   }
 
   class {'::apache':
@@ -33,9 +36,14 @@ class ceph::client::rgw (
     mpm_module       => 'prefork',
   }
 
-  include apache::mod::auth_basic
+  include ::apache::mod::auth_basic
 
   file{'/var/www/fcgi':
     ensure => directory,
   }
+
+  file{'/var/run/ceph':
+    group => 'www-data',
+  }
+
 }
