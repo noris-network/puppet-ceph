@@ -11,6 +11,9 @@
 # [*release*]
 #   Ceph release (Example: firefly)
 #
+# [*repo_url*]
+#   Apt mirror repo url (Example: http://nice.mirror.com/ceph/jewel)
+#
 # [*os_release*]
 #   Override os release name for package source (For example if you use Debian Jessie, but
 #   want to use the wheezy sources from the ceph repository.
@@ -24,6 +27,7 @@ class ceph (
   $os_release                                = $::ceph::params::os_release,
   $public_net                                = $::ceph::params::public_net,
   $release                                   = $::ceph::params::release,
+  $repo_url                                  = $::ceph::params::repo_url,
   $osd_max_backfills                         = $::ceph::params::osd_max_backfills,
   $osd_recovery_max_active                   = $::ceph::params::osd_recovery_max_active,
   $log_to_syslog                             = $::ceph::params::log_to_syslog,

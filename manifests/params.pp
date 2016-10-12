@@ -5,6 +5,7 @@ class ceph::params {
   $cluster_net   = undef
   $public_net    = undef
   $os_release    = $::lsbdistcodename
+  $repo_url      = undef
   $release       = undef
   $log_file      = undef
   $log_to_syslog = undef

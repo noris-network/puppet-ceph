@@ -14,4 +14,9 @@ describe 'ceph::install' do
     it { should contain_apt__pin('ceph').with_packages("*") }
     it { should contain_apt__pin('ceph').with_priority("1001") }
   end
+
+  context 'with repo_url set too http://foobar/deb/jewel' do
+    let(:pre_condition) { 'class{"ceph": mon_hosts => ["x"], repo_url => "http://foobar/deb/jewel" }' }
+    it { should contain_apt__source('ceph').with_location('http://foobar/deb/jewel') }
+  end
 end
