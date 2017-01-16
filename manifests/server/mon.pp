@@ -4,6 +4,9 @@
 #
 # === Parameters
 #
+# [*fsid*]
+#   fsid of ceph cluster, generate one with: uuidgen
+#
 # [*id*]
 #   The id of this monitor.
 #
@@ -13,11 +16,15 @@
 # [*mon_log_file*]
 #   Location of logfile
 #
+# [*public_addr*]
+#   Public ip of this mon-server, this is the address which clients will connect to
+#
 class ceph::server::mon (
   $id,
   $fsid=undef,
   $log_to_syslog=undef,
-  $mon_log_file=undef
+  $mon_log_file=undef,
+  $public_addr=$::ipaddress
   ){
 
   host { $::fqdn:
@@ -42,7 +49,7 @@ class ceph::server::mon (
     user    => 'ceph',
     command => "/usr/bin/ceph-mon --mkfs -i ${id} --fsid ${fsid} --keyring /etc/ceph/keyring",
     creates => "/var/lib/ceph/mon/ceph-${id}/keyring",
-    require => [ Ceph::Key['mon.'], Ceph::Key['client.admin'] ]
+    require => [ Ceph::Key['mon.'], Ceph::Key['client.admin'] ],
   }
 
 }

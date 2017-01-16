@@ -1,7 +1,7 @@
 [mon.<%= @id %>]
 host = <%= @hostname %>
-public addr = <%= @ipaddress %>
-mon addr = <%= @ipaddress %>:6789
+public addr = <%= @public_addr %>
+mon addr = <%= @public_addr %>:6789
 <% unless @log_to_syslog.nil? -%>
 mon cluster log to syslog = true
 <% end -%>
