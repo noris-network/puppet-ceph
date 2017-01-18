@@ -48,7 +48,7 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     user    => 'ceph',
     require => [
       Mount["/var/lib/ceph/osd/ceph-${title}"],
-      File['/etc/ceph/ceph.conf'],
+      Concat['/etc/ceph/ceph.conf'],
       Package['ceph'],
       Ceph::Key['client.admin'],
     ],
