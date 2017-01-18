@@ -8,4 +8,4 @@ mon cluster log to syslog = true
 <% unless @mon_log_file.nil? -%>
 mon cluster log file = <%= @mon_log_file %>
 <% end -%>
-
+mon allow pool delete = true
