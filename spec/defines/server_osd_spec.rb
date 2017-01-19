@@ -13,6 +13,6 @@ describe 'ceph::server::osd', :type => :define do
 
     it { should contain_mount('/var/lib/ceph/osd/ceph-47').with_device('/dev/sdc') }
 
-    it { should contain_file('/etc/udev/rules.d/90-ceph-osd-47.rules').with_content('KERNEL=="/dev/sdb1", SUBSYSTEM=="block", OWNER="ceph"') }
+    it { should contain_file('/etc/udev/rules.d/90-ceph-osd-47.rules').with_content("KERNEL==\"sdb1\", SUBSYSTEM==\"block\", OWNER=\"ceph\"\n") }
   end
 end

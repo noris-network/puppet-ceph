@@ -38,9 +38,10 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     pass    => 2,
   }
   if $journal {
+    $kernel = split($journal, '/')
     file { "/etc/udev/rules.d/90-ceph-osd-${title}.rules":
       ensure  => file,
-      content => "KERNEL==\"${journal}\", SUBSYSTEM==\"block\", OWNER=\"ceph\"",
+      content => "KERNEL==\"${kernel[-1]}\", SUBSYSTEM==\"block\", OWNER=\"ceph\"\n",
     }
     $journal_string="--osd-journal ${journal}"
   }
