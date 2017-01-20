@@ -26,11 +26,20 @@ class ceph::config {
     mode   => $config_dir_mode,
   }
 
-  concat { '/etc/ceph/ceph.conf': }
-  concat::fragment { 'ceph-main':
-    target  => '/etc/ceph/ceph.conf',
-    content => template("${module_name}/ceph.conf-main.erb"),
-    order   => '0001',
+  ceph::config::main_config{'/etc/ceph/ceph.conf':
+    cluster_net                               => $cluster_net,
+    mon_hosts                                 => $mon_hosts,
+    osd_recovery_max_active                   => $osd_recovery_max_active,
+    public_net                                => $public_net,
+    osd_max_backfills                         => $osd_max_backfills,
+    osd_recovery_op_priority                  => $osd_recovery_op_priority,
+    osd_pool_default_size                     => $osd_pool_default_size,
+    osd_pool_default_crush_replicated_ruleset => $osd_pool_default_crush_replicated_ruleset,
+    log_to_syslog                             => $log_to_syslog,
+    log_file                                  => $log_file,
+    config_dir_mode                           => $config_dir_mode,
+    config_dir_group                          => $config_dir_group,
+    osd_heartbeat_grace                       => $osd_heartbeat_grace,
   }
 
   concat { '/etc/ceph/keyring': }
