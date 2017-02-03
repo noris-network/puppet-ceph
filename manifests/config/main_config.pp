@@ -17,6 +17,7 @@ define ceph::config::main_config (
   $config_dir_mode                           = $::ceph::config_dir_mode,
   $config_dir_group                          = $::ceph::config_dir_group,
   $osd_heartbeat_grace                       = undef,
+  $additional_options                        = undef,
 ) {
 
   concat { $title: }

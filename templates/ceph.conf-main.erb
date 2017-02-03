@@ -39,4 +39,8 @@ osd recovery max active  = <%= @osd_recovery_max_active %>
 <% unless @osd_heartbeat_grace.nil? -%>
 osd heartbeat grace = <%= @osd_heartbeat_grace %>
 <% end -%>
-
+<% unless @additional_options.nil? -%>
+<% @additional_options.each do |key,value| -%>
+<%= key %> = <%= value %>
+<% end -%>
+<% end -%>
