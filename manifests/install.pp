@@ -12,12 +12,13 @@ class ceph::install {
     }
 
     apt::source { 'ceph':
-      location    => $_repo_url,
-      release     => $::ceph::os_release,
-      repos       => 'main',
-      key         => '08B73419AC32B4E966C1A330E84AC2C0460F3994',
-      key_source  => 'http://download.ceph.com/keys/release.asc',
-      include_src => false,
+      location => $_repo_url,
+      release  => $::ceph::os_release,
+      repos    => 'main',
+      key      => {
+        'id'     => '08B73419AC32B4E966C1A330E84AC2C0460F3994',
+        'source' => 'http://download.ceph.com/keys/release.asc',
+      },
     }
 
     apt::pin {'ceph':

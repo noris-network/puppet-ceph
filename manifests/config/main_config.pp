@@ -14,8 +14,8 @@ define ceph::config::main_config (
   $osd_pool_default_crush_replicated_ruleset = undef,
   $log_to_syslog                             = undef,
   $log_file                                  = undef,
-  $config_dir_mode                           = $::ceph::config_dir_mode,
-  $config_dir_group                          = $::ceph::config_dir_group,
+  $config_dir_mode                           = '0750',
+  $config_dir_group                          = 'ceph',
   $osd_heartbeat_grace                       = undef,
   $additional_options                        = undef,
 ) {

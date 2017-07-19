@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe 'ceph' do
-  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne' } }
+  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne', :os => { :name => 'Debian', "release" => { "full" => "9.0" } } } }
   let (:params) { {
     :mon_hosts => ['foo','bar'],
     :release => 'firefly',
@@ -16,6 +16,9 @@ describe 'ceph' do
     :osd_heartbeat_grace => 60,
   }}
   it { should contain_class('ceph') }
+  it { should contain_class('ceph::install') }
+  it { should contain_class('ceph::config') }
+  it { should contain_class('ceph::params') }
   it { should contain_concat__fragment('/etc/ceph/ceph.conf-ceph-main').with_content(/^mon host\s+= foo, bar$/) }
   it { should contain_concat__fragment('/etc/ceph/ceph.conf-ceph-main').with_content(/^cluster network\s+= 1.2.3.4\/24$/) }
   it { should contain_concat__fragment('/etc/ceph/ceph.conf-ceph-main').with_content(/^public network\s+= 5.6.7.8\/24$/) }
