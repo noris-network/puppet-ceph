@@ -1,19 +1,16 @@
-# == Class: admin_ceph::mon
+# == Class: ceph::server::mds
 #
-# This module configures a mon server for ceph
+# This module configures an mds server for ceph
 #
 # === Parameters
 #
 # [*id*]
-#   The id of this monitor.
+#   The id of this mds.
 #
-# [*log_to_syslog*]
-#   Enable logging to syslog
-#
-# [*mon_log_file*]
-#   Location of logfile
-#
-class ceph::server::mds ($id){
+class ceph::server::mds (
+  $id,
+  $cache_size = undef,
+  ){
 
   concat::fragment { '/etc/ceph/ceph.conf-mds':
     target  => '/etc/ceph/ceph.conf',

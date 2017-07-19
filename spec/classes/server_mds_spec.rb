@@ -5,7 +5,8 @@ describe 'ceph::server::mds' do
     it { should contain_class('ceph::server::mds') }
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-mds').with_content(/^\[mds.1\]$/) }
     let(:facts) { {'hostname' => 'mds', 'ipaddress' => '1.2.3.4', 'osfamily' => 'Debian', :concat_basedir => '/dne' } }
-    let(:params) { { 'id' => 1 } }
+    let(:params) { { 'id' => 1, 'cache_size' => 200000 } }
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-mds').with_content(/^host = mds$/) }
+    it { should contain_concat__fragment('/etc/ceph/ceph.conf-mds').with_content(/^mds cache size = 200000$/) }
   end
 end

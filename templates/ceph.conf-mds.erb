@@ -1,3 +1,6 @@
 [mds.<%= @id %>]
 host = <%= @hostname %>
+<% unless @cache_size.nil? -%>
+mds cache size = <%= @cache_size %>
+<% end -%>
 
