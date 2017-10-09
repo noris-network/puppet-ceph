@@ -40,6 +40,7 @@ class ceph::config {
     config_dir_mode                           => $config_dir_mode,
     config_dir_group                          => $config_dir_group,
     osd_heartbeat_grace                       => $osd_heartbeat_grace,
+    mon_osd_min_down_reporters                => $::ceph::mon_osd_min_down_reporters,
   }
 
   concat { '/etc/ceph/keyring': }

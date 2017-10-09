@@ -1,6 +1,6 @@
 {
   "name": "norisnetwork-ceph",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "author": "Micha Krause",
   "summary": "A module for configuring ceph",
   "license": "LGPL-3.0",
@@ -21,7 +21,8 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7.0",
-        "8.0"
+        "8.0",
+        "9.0"
       ]
     }
   ]
