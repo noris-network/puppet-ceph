@@ -35,7 +35,7 @@ class ceph (
   $config_dir_mode                           = $::ceph::params::config_dir_mode,
   $config_dir_group                          = $::ceph::params::config_dir_group,
   $osd_heartbeat_grace                       = $::ceph::params::osd_heartbeat_grace,
-  $mon_osd_min_down_reporters                = ::ceph::params::mon_osd_min_down_reporters,
+  $mon_osd_min_down_reporters                = $::ceph::params::mon_osd_min_down_reporters,
   ) inherits ceph::params {
 
   include ::ceph::install

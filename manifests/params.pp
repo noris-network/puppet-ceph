@@ -17,4 +17,5 @@ class ceph::params {
   $osd_recovery_max_active                   = undef
   $config_dir_group                          = 'ceph'
   $osd_heartbeat_grace                       = undef
+  $mon_osd_min_down_reporters                = undef
 }
