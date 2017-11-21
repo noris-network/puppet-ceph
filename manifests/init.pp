@@ -31,6 +31,7 @@ class ceph (
   $public_net                                = $::ceph::params::public_net,
   $release                                   = $::ceph::params::release,
   $repo_url                                  = $::ceph::params::repo_url,
+  $key_url                                   = $::ceph::params::key_url,
   $osd_max_backfills                         = $::ceph::params::osd_max_backfills,
   $osd_recovery_max_active                   = $::ceph::params::osd_recovery_max_active,
   $log_to_syslog                             = $::ceph::params::log_to_syslog,
