@@ -14,6 +14,9 @@
 # [*repo_url*]
 #   Apt mirror repo url (Example: http://nice.mirror.com/ceph/jewel)
 #
+# [*key_url*]
+#   Apt key url (http://download.ceph.com/keys/release.asc)
+#
 # [*os_release*]
 #   Override os release name for package source (For example if you use Debian Jessie, but
 #   want to use the wheezy sources from the ceph repository.
