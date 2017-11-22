@@ -6,6 +6,7 @@ class ceph::params {
   $public_net                                = undef
   $os_release                                = $::lsbdistcodename
   $repo_url                                  = undef
+  $key_url                                   = undef
   $release                                   = undef
   $log_file                                  = undef
   $log_to_syslog                             = undef
