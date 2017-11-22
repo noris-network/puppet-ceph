@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe 'ceph' do
-  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne', :os => { :name => 'Debian', "release" => { "full" => "9.0" } } } }
+  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne', :os => { :name => 'Debian', "release" => { "full" => "9.0", "major" => "9" } } } }
   let (:params) { {
     :mon_hosts => ['foo','bar'],
     :release => 'firefly',

@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe 'ceph::install' do
-  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne', 'os' => { 'name' => 'Debian', "release" => { "full" => "9.0" } } } }
+  let(:facts) { {'lsbdistcodename' => 'wheezy', 'osfamily' => 'debian', 'lsbdistid' => 'Debian', 'concat_basedir' => '/dne', 'os' => { 'name' => 'Debian', "release" => { "full" => "9.0", "major" => "9" } } } }
   context 'with defaults for all parameters' do
     let(:pre_condition) { 'class{"ceph": mon_hosts => ["x"]}' }
     it { should contain_class('ceph::install') }
