@@ -8,6 +8,9 @@ mon host = <%= @mon_hosts.join(", ") %>
 <% unless @mon_osd_min_down_reporters.nil? -%>
 mon osd min down reporters = <%= @mon_osd_min_down_reporters %>
 <% end -%>
+<% unless @mon_osd_down_out_interval.nil? -%>
+mon osd down out interval = <%= @mon_osd_down_out_interval %>
+<% end -%>
 
 <% unless @log_to_syslog.nil? -%>
 log to syslog = true
