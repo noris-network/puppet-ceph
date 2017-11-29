@@ -12,13 +12,42 @@
 #
 # [*location*]
 #   The location of this osd.
+#
+# [*bluestore*]
+#   The bluestore partition
 
-define ceph::server::osd ($data,$journal=undef,$location=undef){
+define ceph::server::osd ($data,$journal=undef,$location=undef,$bluestore=undef){
 
   concat::fragment { "/etc/ceph/ceph.conf-osd-${title}":
     target  => '/etc/ceph/ceph.conf',
     content => template("${module_name}/ceph.conf-osd.erb"),
     order   => 2,
+  }
+
+  exec { "createosddir-${title}":
+    command => "/bin/mkdir -p /var/lib/ceph/osd/ceph-${title}",
+    creates => "/var/lib/ceph/osd/ceph-${title}"
+  }
+
+  if $bluestore {
+    exec { "createbluestore-${title}":
+        command => "/usr/sbin/ceph-disk prepare --bluestore ${bluestore}",
+        creates => "/var/lib/ceph/osd/ceph-${title}/block"
+    }
+    $_mkfs = ''
+  } else {
+    $_mkfs = ' --mkfs '
+  }
+
+  mount { "/var/lib/ceph/osd/ceph-${title}":
+    ensure  => 'mounted',
+    device  => $data,
+    fstype  => 'xfs',
+    options => 'inode64',
+    atboot  => true,
+    require => Exec["createosddir-${title}"],
+    notify  => File["/var/lib/ceph/osd/ceph-${title}"],
+    pass    => 2,
   }
 
   file { "/var/lib/ceph/osd/ceph-${title}" :
@@ -28,15 +57,6 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
     group  => 'ceph',
   }
 
-  mount { "/var/lib/ceph/osd/ceph-${title}":
-    ensure  => 'mounted',
-    device  => $data,
-    fstype  => 'xfs',
-    options => 'inode64',
-    atboot  => true,
-    require => File["/var/lib/ceph/osd/ceph-${title}"],
-    pass    => 2,
-  }
   if $journal {
     file { "/etc/udev/rules.d/90-ceph-osd-${title}.rules":
       ensure  => file,
@@ -52,7 +72,7 @@ define ceph::server::osd ($data,$journal=undef,$location=undef){
       Package['ceph'],
       Ceph::Key['client.admin'],
     ],
-    command => "/usr/bin/ceph-osd -i ${title} --mkfs --mkkey ${journal_string} && /usr/bin/ceph auth add osd.${title} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${title}/keyring",
+    command => "/usr/bin/ceph-osd -i ${title} ${_mkfs} --mkkey ${journal_string} && /usr/bin/ceph auth add osd.${title} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${title}/keyring",
     creates => "/var/lib/ceph/osd/ceph-${title}/keyring",
   }
 }
