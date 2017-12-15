@@ -34,9 +34,9 @@ class ceph::server::mgr (
 
   exec { "createmgr-${id}":
     user    => 'ceph',
-    command => "/usr/bin/ceph auth get-or-create mgr.${id} > /var/lib/ceph/mgr/ceph-${id}/keyring",
+    command => "/usr/bin/ceph auth get-or-create mgr.${id} mon 'allow profile mgr' osd 'allow *' mds 'allow *' > /var/lib/ceph/mgr/ceph-${id}/keyring",
     creates => "/var/lib/ceph/mgr/ceph-${id}/keyring",
-    require => [ Ceph::Key["mgr.${id}"] ],
+    require => [ Ceph::Key['client.admin'] ],
   }
 
 }
