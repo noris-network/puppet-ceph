@@ -3,4 +3,4 @@ fixtures:
     concat: "git://github.com/puppetlabs/puppetlabs-concat"
     stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib"
     apt:    "git://github.com/puppetlabs/puppetlabs-apt"
-    apache: "https://github.com/puppetlabs/puppetlabs-apache.git"
+    haproxy: "https://github.com/puppetlabs/puppetlabs-haproxy.git"

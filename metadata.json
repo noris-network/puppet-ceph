@@ -1,6 +1,6 @@
 {
   "name": "norisnetwork-ceph",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "author": "Micha Krause",
   "summary": "A module for configuring ceph",
   "license": "LGPL-3.0",
@@ -11,7 +11,7 @@
     {"name":"puppetlabs/stdlib"},
     {"name":"puppetlabs/concat"},
     {"name":"puppetlabs/apt"},
-    {"name":"puppetlabs/apache"}
+    {"name":"puppetlabs/haproxy"}
   ],
   "tags": [
     "ceph"

@@ -11,7 +11,8 @@
 
 class ceph::client::rgw (
   $rgw_dns_name,
-  $rgw_bucket_index_max_shards=undef,
+  $rgw_bucket_index_max_shards = undef,
+  $rgw_civetweb_port           = 7480,
 ) {
   concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
@@ -37,13 +38,5 @@ class ceph::client::rgw (
   }
 
   include ::apache::mod::auth_basic
-
-  file{'/var/www/fcgi':
-    ensure => directory,
-  }
-
-  file{'/var/run/ceph':
-    group => 'www-data',
-  }
 
 }
