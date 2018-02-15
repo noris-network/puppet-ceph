@@ -30,7 +30,7 @@ class ceph::client::rgw::haproxy (
         'server 50000',
       ]
     },
-    global_options => {
+    global_options   => {
       'log'   => "${logserver} local0",
       'group' => 'haproxy',
       'user'  => 'haproxy',
@@ -38,10 +38,10 @@ class ceph::client::rgw::haproxy (
   }
 
   haproxy::frontend { 'http':
-    bind => {
+    bind    => {
       '0.0.0.0:80' => [],
     },
-    mode => 'http',
+    mode    => 'http',
     options => {
       'default_backend' => 'civetweb',
     }
@@ -51,10 +51,10 @@ class ceph::client::rgw::haproxy (
     $prefixed = prefix($pems, 'crt ')
     $ssl = flatten(['ssl',$prefixed ])
     haproxy::frontend { 'https':
-      bind => {
+      bind    => {
         '0.0.0.0:443' => $ssl,
       },
-      mode => 'http',
+      mode    => 'http',
       options => {
         'default_backend' => 'civetweb',
       }
@@ -70,7 +70,7 @@ class ceph::client::rgw::haproxy (
   }
 
   haproxy::backend { 'civetweb':
-    mode => http,
+    mode    => http,
     options => {},
   }
 }

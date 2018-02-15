@@ -15,7 +15,7 @@ class ceph::install {
       $_key_url = $::ceph::key_url
     }
     else {
-      $_key_url = "http://download.ceph.com/keys/release.asc"
+      $_key_url = 'http://download.ceph.com/keys/release.asc'
     }
 
     apt::source { 'ceph':

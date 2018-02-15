@@ -11,28 +11,28 @@ class ceph::server::mgr (
   $id,
   ){
 
-  file { "/var/lib/ceph/mgr":
+  file { '/var/lib/ceph/mgr':
     ensure => directory,
     mode   => '0750',
     owner  => 'ceph',
     group  => 'ceph',
-  } ->
+  }
 
-  file { "/var/lib/ceph/mgr/ceph-${id}" :
+  -> file { "/var/lib/ceph/mgr/ceph-${id}" :
     ensure => directory,
     mode   => '0750',
     owner  => 'ceph',
     group  => 'ceph',
-  } ->
+  }
 
-  file { "/var/lib/ceph/mgr/ceph-${id}/sysvinit":
+  -> file { "/var/lib/ceph/mgr/ceph-${id}/sysvinit":
     ensure => present,
-    mode => '0400',
-    owner => 'ceph',
-    group => 'ceph',
-  } ->
+    mode   => '0400',
+    owner  => 'ceph',
+    group  => 'ceph',
+  }
 
-  exec { "createmgr-${id}":
+  -> exec { "createmgr-${id}":
     user    => 'ceph',
     command => "/usr/bin/ceph auth get-or-create mgr.${id} mon 'allow profile mgr' osd 'allow *' mds 'allow *' > /var/lib/ceph/mgr/ceph-${id}/keyring",
     creates => "/var/lib/ceph/mgr/ceph-${id}/keyring",
