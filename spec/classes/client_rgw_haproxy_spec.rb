@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe 'ceph::client::rgw::haproxy' do
 
-  let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian', :operatingsystem => 'Debian', :ipaddress => '1.2.3.4' } }
+  let(:facts) { {'hostname' => 'rgw', :concat_basedir => '/dne', :operatingsystemrelease => '8.1', :osfamily => 'Debian', :operatingsystem => 'Debian', :ipaddress => '1.2.3.4', :fqdn => 'rgw.foo.bar' } }
   let(:pre_condition) { 'class {"::ceph::client::rgw": rgw_dns_name => "foo.bar" }' }
 
   let(:params) { {
@@ -19,7 +19,8 @@ describe 'ceph::client::rgw::haproxy' do
       ]
     },
     :global_options => {
-      'log' => 'logserver local0',
+      'log' => 'logserver local0 debug',
+      'log-send-hostname' => 'rgw.foo.bar',
       'group' => 'haproxy',
       'user' => 'haproxy'
     }

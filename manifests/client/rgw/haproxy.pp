@@ -31,9 +31,10 @@ class ceph::client::rgw::haproxy (
       ]
     },
     global_options   => {
-      'log'   => "${logserver} local0",
-      'group' => 'haproxy',
-      'user'  => 'haproxy',
+      'log'               => "${logserver} local0 debug",
+      'log-send-hostname' => $::fqdn,
+      'group'             => 'haproxy',
+      'user'              => 'haproxy',
     },
   }
 
