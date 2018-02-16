@@ -12,6 +12,7 @@ describe 'ceph::client::rgw::haproxy' do
   it { should contain_class('haproxy').with(
     :defaults_options => {
       "option"  => 'httplog clf',
+      "log" => 'global',
       "timeout" => [
         "connect 5000",
         "client 50000",
