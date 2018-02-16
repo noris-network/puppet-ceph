@@ -1,6 +1,7 @@
 [client.radosgw.rgw]
 host = <%= @hostname %>
 rgw frontends = "civetweb<% unless @rgw_civetweb_port.nil? %> port=<%= @rgw_civetweb_port %><% end %>"
+debug rgw = 1
 keyring = /etc/ceph/keyring
 rgw resolve cname = true
 log file = /var/log/ceph/radosgw.log
