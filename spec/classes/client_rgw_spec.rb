@@ -16,5 +16,6 @@ describe 'ceph::client::rgw' do
     it { should contain_concat__fragment('/etc/ceph/ceph.conf-rgw').with_content(/^rgw frontends = "civetweb port=80"$/) }
     it { should contain_package('radosgw').with_ensure('installed') }
     it { should contain_service('radosgw').with_ensure('running') }
+    it { should contain_file('/var/run/ceph/ceph-client.radosgw.rgw.asok') }
   end
 end

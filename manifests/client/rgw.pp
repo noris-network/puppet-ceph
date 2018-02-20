@@ -28,15 +28,8 @@ class ceph::client::rgw (
     require => [ Package['radosgw'], Class['::ceph::config'] ],
   }
 
-  class {'::apache':
-    default_mods     => false,
-    default_vhost    => false,
-    server_tokens    => 'Prod',
-    server_signature => 'Off',
-    trace_enable     => 'Off',
-    mpm_module       => 'prefork',
+  file {'/var/run/ceph/ceph-client.radosgw.rgw.asok':
+    owner => 'ceph',
   }
-
-  include ::apache::mod::auth_basic
 
 }
