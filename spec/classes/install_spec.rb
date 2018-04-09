@@ -5,6 +5,7 @@ describe 'ceph::install' do
     let(:pre_condition) { 'class{"ceph": mon_hosts => ["x"]}' }
     it { should contain_class('ceph::install') }
     it { should contain_package('ceph') }
+    it { should contain_service('rbdmap').with( :ensure => 'running', :enable => true,) }
   end
   context 'with release set to x and os_release set to foobar' do
     let(:pre_condition) { 'class{"ceph": os_release => "foobar", mon_hosts => ["x"], release => "x" }' }
