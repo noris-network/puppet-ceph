@@ -26,9 +26,9 @@ class ceph::client::rgw::haproxy (
       'option'  => 'httplog clf',
       'log'     => 'global',
       'timeout' => [
-        'connect 5000',
-        'client 50000',
-        'server 50000',
+        'connect 50000',
+        'client 500000',
+        'server 500000',
       ]
     },
     global_options   => {
