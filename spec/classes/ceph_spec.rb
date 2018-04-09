@@ -18,6 +18,7 @@ describe 'ceph' do
   it { should contain_class('ceph') }
   it { should contain_class('ceph::install') }
   it { should contain_class('ceph::config') }
+  it { should contain_class('ceph::service') }
   it { should contain_class('ceph::params') }
   it { should contain_concat__fragment('/etc/ceph/ceph.conf-ceph-main').with_content(/^mon host\s+= foo, bar$/) }
   it { should contain_concat__fragment('/etc/ceph/ceph.conf-ceph-main').with_content(/^cluster network\s+= 1.2.3.4\/24$/) }

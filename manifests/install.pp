@@ -38,4 +38,5 @@ class ceph::install {
   package { 'ceph':
     ensure => 'installed',
   }
+
 }
