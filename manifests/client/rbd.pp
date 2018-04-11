@@ -8,6 +8,7 @@ define ceph::client::rbd ($pool=rbd,$id=admin) {
     command => "rbd -p ${pool} --id ${id} map ${title}",
     path    => [ '/usr/bin/', '/bin/' ],
     creates => "/dev/rbd/${pool}/${title}",
+    require => Package['ceph']
   }
 
 }
