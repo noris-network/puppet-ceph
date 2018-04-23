@@ -9,3 +9,6 @@ rgw dns name = <%= @rgw_dns_name %>
 <% unless @rgw_bucket_index_max_shards.nil? -%>
 rgw override bucket index max shards = <%= @rgw_bucket_index_max_shards %>
 <% end -%>
+<% unless @rgw_dynamic_resharding.nil? -%>
+rgw dynamic resharding = <%= @rgw_dynamic_resharding %>
+<% end -%>

@@ -13,6 +13,7 @@ class ceph::client::rgw (
   $rgw_dns_name,
   $rgw_bucket_index_max_shards = undef,
   $rgw_civetweb_port           = 7480,
+  $rgw_dynamic_resharding      = undef,
 ) {
   concat::fragment { '/etc/ceph/ceph.conf-rgw':
     target  => '/etc/ceph/ceph.conf',
