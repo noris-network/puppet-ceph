@@ -30,7 +30,7 @@ class ceph::install {
 
     apt::pin {'ceph':
       priority   => 1001,
-      originator => 'RedHat',
+      originator => 'ceph.com',
       packages   => '*',
     }
   }
