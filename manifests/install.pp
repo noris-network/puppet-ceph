@@ -39,12 +39,4 @@ class ceph::install {
     ensure => 'installed',
   }
 
-  service{ 'rbdmap':
-    ensure    => 'running',
-    enable    => true,
-    tag       => 'rbdmap',
-    require   => [ Package['ceph'], Ceph::Config::Main_config['/etc/ceph/ceph.conf'] ],
-    subscribe => Concat['/etc/ceph/rbdmap']
-  }
-
 }
