@@ -11,7 +11,7 @@ describe 'ceph::install' do
     let(:pre_condition) { 'class{"ceph": os_release => "foobar", mon_hosts => ["x"], release => "x" }' }
     it { should contain_apt__source('ceph').with_release('foobar') }
     it { should contain_apt__source('ceph').with_location('http://download.ceph.com/debian-x/') }
-    it { should contain_apt__pin('ceph').with_originator("RedHat") }
+    it { should contain_apt__pin('ceph').with_originator("ceph.com") }
     it { should contain_apt__pin('ceph').with_packages("*") }
     it { should contain_apt__pin('ceph').with_priority("1001") }
   end
