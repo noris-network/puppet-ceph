@@ -7,7 +7,7 @@ define ceph::client::rbd ($pool=rbd,$id=admin) {
   service{ 'rbdmap':
     ensure => 'running',
     enable => true,
-    require => Package['ceph']
+    require => [ Package['ceph'], Ceph::Config::Main_config['/etc/ceph/ceph.conf'] ]
   }
 
 }
