@@ -30,8 +30,8 @@ rgw keystone url =  <%= @rgw_keystone_url %>
 <% unless @rgw_keystone_api_version.nil? -%>
 rgw keystone api version = <%= @rgw_keystone_api_version %>
 <% end -%>
-<% unless @rgw_keystone_api_version.nil? -%>
-rgw keystone admin user = <%= @rgw_keystone_api_version %>
+<% unless @rgw_keystone_admin_user.nil? -%>
+rgw keystone admin user = <%= @rgw_keystone_admin_user %>
 <% end -%>
 <% unless @rgw_keystone_admin_password.nil? -%>
 rgw keystone admin password = <%= @rgw_keystone_admin_password %>
