@@ -12,3 +12,60 @@ rgw override bucket index max shards = <%= @rgw_bucket_index_max_shards %>
 <% unless @rgw_dynamic_resharding.nil? -%>
 rgw dynamic resharding = <%= @rgw_dynamic_resharding %>
 <% end -%>
+<% unless @rgw_frontends.nil? -%>
+rgw frontends = <%= @rgw_frontends %>
+<% end -%>
+<% unless @rgw_max_attr_size.nil? -%>
+rgw_max attr size = <%= @rgw_max_attr_size %>
+<% end -%>
+<% unless @rgw_max_attrs_num_in_req.nil? -%>
+rgw max attrs num in req = <%= @rgw_max_attrs_num_in_req %>
+<% end -%>
+<% unless @rgw_max_attr_name_len.nil? -%>
+rgw max attr name len = <%= @rgw_max_attr_name_len %>
+<% end -%>
+<% unless @rgw_keystone_url.nil? -%>
+rgw keystone url =  <%= @rgw_keystone_url %>
+<% end -%>
+<% unless @rgw_keystone_api_version.nil? -%>
+rgw keystone api version = <%= @rgw_keystone_api_version %>
+<% end -%>
+<% unless @rgw_keystone_api_version.nil? -%>
+rgw keystone admin user = <%= @rgw_keystone_api_version %>
+<% end -%>
+<% unless @rgw_keystone_admin_password.nil? -%>
+rgw keystone admin password = <%= @rgw_keystone_admin_password %>
+<% end -%>
+<% unless @rgw_keystone_admin_domain.nil? -%>
+rgw keystone admin domain = <%= @rgw_keystone_admin_domain %>
+<% end -%>
+<% unless @rgw_keystone_admin_project.nil? -%>
+rgw keystone admin project = <%= @rgw_keystone_admin_project %>
+<% end -%>
+<% unless @rgw_keystone_accepted_roles.nil? -%>
+rgw keystone accepted roles = <%= @rgw_keystone_accepted_roles %>
+<% end -%>
+<% unless @rgw_keystone_accepted_admin_roles.nil? -%>
+rgw keystone accepted admin roles = <%= @rgw_keystone_accepted_admin_roles %>
+<% end -%>
+<% unless @rgw_keystone_token_cache_size.nil? -%>
+rgw keystone token cache size = <%= @rgw_keystone_token_cache_size %>
+<% end -%>
+<% unless @rgw_keystone_revocation_interval.nil? -%>
+rgw keystone revocation interval = <%= @rgw_keystone_revocation_interval %>
+<% end -%>
+<% unless @rgw_s3_auth_use_keystone.nil? -%>
+rgw s3 auth use keystone = <%= @rgw_s3_auth_use_keystone %>
+<% end -%>
+<% unless @rgw_keystone_implicit_tenants.nil? -%>
+rgw keystone implicit tenants = <%= @rgw_keystone_implicit_tenants %>
+<% end -%>
+<% unless @rgw_swift_enforce_content_length.nil? -%>
+rgw swift enforce content length = <%= @rgw_swift_enforce_content_length %>
+<% end -%>
+<% unless @rgw_swift_account_in_url.nil? -%>
+rgw swift account in url = <%= @rgw_swift_account_in_url %>
+<% end -%>
+<% unless @rgw_swift_versioning_enabled.nil? -%>
+rgw swift versioning enabled = <%= @rgw_swift_versioning_enabled %>
+<% end -%>
