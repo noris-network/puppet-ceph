@@ -41,6 +41,7 @@ class ceph (
   $osd_heartbeat_grace                       = $::ceph::params::osd_heartbeat_grace,
   $mon_osd_min_down_reporters                = $::ceph::params::mon_osd_min_down_reporters,
   $mon_osd_down_out_interval                 = $::ceph::params::mon_osd_down_out_interval,
+  $additional_options                        = $::ceph::params::additional_options,
   ) inherits ceph::params {
 
   include ::ceph::install
