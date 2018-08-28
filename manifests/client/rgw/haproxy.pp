@@ -41,7 +41,7 @@ class ceph::client::rgw::haproxy (
 
   haproxy::frontend { 'http':
     bind    => {
-      '0.0.0.0:80' => [],
+      ':::80 v4v6' => [],
     },
     mode    => 'http',
     options => {
@@ -54,7 +54,7 @@ class ceph::client::rgw::haproxy (
     $ssl = flatten(['ssl',$prefixed ])
     haproxy::frontend { 'https':
       bind    => {
-        '0.0.0.0:443' => $ssl,
+        ':::443 v4v6' => $ssl,
       },
       mode    => 'http',
       options => {
