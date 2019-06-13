@@ -45,5 +45,6 @@ class ceph (
 
   include ::ceph::install
   include ::ceph::config
+  include ::ceph::service
   Class['::ceph::install'] -> Class['::ceph::config']
 }
