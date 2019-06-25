@@ -20,4 +20,5 @@ class ceph::params {
   $osd_heartbeat_grace                       = undef
   $mon_osd_min_down_reporters                = undef
   $mon_osd_down_out_interval                 = undef
+  $additional_options                        = undef
 }
