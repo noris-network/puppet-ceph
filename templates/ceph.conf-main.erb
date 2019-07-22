@@ -4,7 +4,9 @@ auth service required = cephx
 auth client required = cephx
 mon osd down out subtree limit = host
 
+<% unless @mon_hosts.nil? %>
 mon host = <%= @mon_hosts.join(", ") %>
+<% end -%>
 <% unless @mon_osd_min_down_reporters.nil? -%>
 mon osd min down reporters = <%= @mon_osd_min_down_reporters %>
 <% end -%>
